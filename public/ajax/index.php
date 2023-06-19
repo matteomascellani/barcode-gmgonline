@@ -36,7 +36,6 @@ if($task) {
                 } 
                 echo json_encode($_SESSION);
             } elseif($type == "order") {
-                session_start();
                 $eans = [];
                 $id = substr(substr($ean, -7), 0, -1);
                 $result = $db->Query("SELECT id, string FROM jos_rkcommerce_gross_orders WHERE id = " . $id);
