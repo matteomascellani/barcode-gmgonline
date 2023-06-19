@@ -291,6 +291,25 @@ $(function() {
             $node.find("img").attr("src", canvas.toDataURL());
             $node.find("h4.code").html(code);
             $("#result_strip ul.thumbnails").prepend($node);
+
+            $.ajax({
+                type : 'POST',
+                url : "../ajax/index.php",
+                data : {
+                    data : {
+                    task : "check_code",
+                    ean : code,
+                    type : "product",
+                },
+                success : function(data) {
+                    var obj = jQuery.parseJSON(data);
+                    console.log(obj.html);
+                },
+                error : function() {
+    
+                }
+            });
+
         }
     });
 
