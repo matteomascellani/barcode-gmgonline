@@ -310,7 +310,12 @@ $(function() {
                 success : function(data) {
                     var obj = jQuery.parseJSON(data);
                     console.log(obj.is_ean);
-                    $("#result_strip ul.texts").html(obj.is_ean ? "Prodotto presente nell'ordine" : "Prodotto non presente nell'ordine");
+                    if(obj.error) {
+                        $("#result_strip ul.texts").html(obj.error);    
+                    } else {
+                        $("#result_strip ul.texts").html(obj.is_ean ? "Prodotto presente nell'ordine" : "Prodotto non presente nell'ordine");
+                    }
+                    
                     $("#result_strip ul.thumbnails").prepend($node);
                 },
                 error : function() {
