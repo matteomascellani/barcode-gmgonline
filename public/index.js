@@ -247,11 +247,7 @@ $(function() {
             decoder: {
                 readers : [{
                     format: "ean_reader",
-                    config: {
-                        supplements: [
-                            'code_128'
-                        ]
-                    }
+                    config: {}
                 }]
             },
             locate: true
