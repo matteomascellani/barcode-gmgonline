@@ -230,7 +230,6 @@ $(function() {
         state: {
             inputStream: {
                 type : "LiveStream",
-                target: document.querySelector('#order'),
                 constraints: {
                     width: {min: 640},
                     height: {min: 480},
@@ -246,7 +245,7 @@ $(function() {
             frequency: 10,
             decoder: {
                 readers : [{
-                    format: "ean_reader",
+                    format: "code_128_reader",
                     config: {}
                 }]
             },

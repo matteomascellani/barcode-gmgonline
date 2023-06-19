@@ -40,24 +40,25 @@ footer {
   padding: 1em 2em 2em;
 }
 
-#order, #product {
-  width: 100%;
-  height: 100%;
+#container {
+  width: 640px;
+  margin: 20px auto;
+  padding: 10px;
 }
 
-#order.viewport, #product.viewport {
-  width: 100%;
-  height: 100%;
+#interactive.viewport {
+  width: 640px;
+  height: 480px;
 }
 
 
-#order.viewport canvas, #product.viewport canvas, video {
+#interactive.viewport canvas, video {
   float: left;
-  width: 100%;
-  height: 100%;
+  width: 640px;
+  height: 480px;
 }
 
-#order.viewport canvas.drawingBuffer, #product.viewport canvas.drawingBuffer, video.drawingBuffer {
+#interactive.viewport canvas.drawingBuffer, video.drawingBuffer {
   margin-left: -640px;
 }
 
@@ -229,20 +230,20 @@ i.icon-24-scan {
       max-width: calc(50% - 2px);
   }
 
-  #order.viewport {
-    width: 100%;
-    height: 100%;
+  #interactive.viewport {
+    width: 300px;
+    height: 300px;
     overflow: hidden;
   }
 
 
-  #order.viewport canvas, video {
+  #interactive.viewport canvas, video {
     margin-top: -50px;
-    width: 100%;
-    height: 100%;
+    width: 300px;
+    height: 400px;
   }
 
-  #order.viewport canvas.drawingBuffer, video.drawingBuffer {
+  #interactive.viewport canvas.drawingBuffer, video.drawingBuffer {
     margin-left: -300px;
   }
 
