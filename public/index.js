@@ -230,6 +230,7 @@ $(function() {
         state: {
             inputStream: {
                 type : "LiveStream",
+                target: document.querySelector('#order'),
                 constraints: {
                     width: {min: 640},
                     height: {min: 480},
