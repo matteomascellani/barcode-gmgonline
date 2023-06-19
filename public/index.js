@@ -298,7 +298,7 @@ $(function() {
                 data : {
                     task : "check_code",
                     ean : code,
-                    type : "order",
+                    type : "product",
                 },
                 success : function(data) {
                     var obj = jQuery.parseJSON(data);
