@@ -310,6 +310,7 @@ $(function() {
                 success : function(data) {
                     var obj = jQuery.parseJSON(data);
                     console.log(obj.is_ean);
+                    $("#result_strip ul.thumbnails").html(obj.is_ean ? "Prodotto presente nell'ordine" : "Prodotto non presente nell'ordine");
                     $("#result_strip ul.thumbnails").prepend($node);
                 },
                 error : function() {
