@@ -296,7 +296,6 @@ $(function() {
                 type : 'POST',
                 url : "../ajax/index.php",
                 data : {
-                    data : {
                     task : "check_code",
                     ean : code,
                     type : "product",
@@ -309,7 +308,6 @@ $(function() {
     
                 }
             });
-
         }
     });
 
