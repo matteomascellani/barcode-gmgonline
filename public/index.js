@@ -282,9 +282,13 @@ $(function() {
 
     Quagga.onDetected(function(result) {
         var code = result.codeResult.code;
+        var format = result.codeResult.format;
 
-        console.log(result);
-        console.log(App.state.decoder.readers);
+        if(format == 'ean_13') {
+            type = 'product';
+        } else if(format == 'code_128') {
+            type = 'order';
+        }
 
         if (App.lastResult !== code) {
             App.lastResult = code;
@@ -301,7 +305,7 @@ $(function() {
                 data : {
                     task : "check_code",
                     ean : code,
-                    type : "product",
+                    type : type,
                 },
                 success : function(data) {
                     var obj = jQuery.parseJSON(data);
