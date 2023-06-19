@@ -302,7 +302,7 @@ $(function() {
                 },
                 success : function(data) {
                     var obj = jQuery.parseJSON(data);
-                    console.log(obj.html);
+                    console.log(obj);
                 },
                 error : function() {
     
