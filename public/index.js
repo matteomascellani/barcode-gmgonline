@@ -309,7 +309,7 @@ $(function() {
                 },
                 success : function(data) {
                     var obj = jQuery.parseJSON(data);
-                    console.log(obj.);
+                    console.log(obj.is_ean);
                     $("#result_strip ul.thumbnails").prepend($node);
                 },
                 error : function() {
