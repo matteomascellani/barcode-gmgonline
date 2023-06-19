@@ -33,7 +33,6 @@ if($task) {
                 $_SESSION['ean'] = $item["ean"];
                 echo json_encode($_SESSION);
             } elseif($type == "order") {
-                session_destroy();
                 session_start();
                 $eans = [];
                 $id = substr(substr($ean, -7), 0, -1);
