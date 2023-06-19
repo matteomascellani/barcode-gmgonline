@@ -21,6 +21,7 @@ if($task) {
                 $result = $db->Query("SELECT id, title, ean FROM jos_rkcommerce_products WHERE ean = " . $ean);
             } elseif($type == "order") {
                 $result = $db->Query("SELECT id, string FROM jos_rkcommerce_gross_orders WHERE id = " . substr($ean, -7));
+                echo "SELECT id, string FROM jos_rkcommerce_gross_orders WHERE id = " . substr($ean, -7);
             }
             $item = $db->Result($result);
             print_r($item);
