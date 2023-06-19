@@ -113,6 +113,17 @@ $(function() {
                 self._printCollectedResults();
             });
 
+            $(".controls .reader-config-group").on("click", "input", function(e) {
+                e.preventDefault();
+                var $target = $(e.target),
+                    value = $target.val(),
+                    name = $target.attr("name"),
+                    state = self._convertNameToState(name);
+
+                console.log("Value of "+ state + " changed to " + value);
+                self.setState(state, value);
+            });
+
             $(".controls .reader-config-group").on("change", "input, select", function(e) {
                 e.preventDefault();
                 var $target = $(e.target),
