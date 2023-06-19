@@ -41,21 +41,20 @@ footer {
 }
 
 #order, #product {
-  width: 640px;
-  margin: 20px auto;
-  padding: 10px;
+  width: 100%;
+  height: 100%;
 }
 
 #order.viewport, #product.viewport {
-  width: 640px;
-  height: 480px;
+  width: 100%;
+  height: 100%;
 }
 
 
 #order.viewport canvas, #product.viewport canvas, video {
   float: left;
-  width: 640px;
-  height: 480px;
+  width: 100%;
+  height: 100%;
 }
 
 #order.viewport canvas.drawingBuffer, #product.viewport canvas.drawingBuffer, video.drawingBuffer {
