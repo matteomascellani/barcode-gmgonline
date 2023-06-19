@@ -340,7 +340,13 @@ $(function() {
                     if(obj.error) {
                         $("#result_strip ul.texts").html(obj.error);    
                     } else {
-                        $("#result_strip ul.texts").html(obj.is_ean ? "Prodotto presente nell'ordine" : "Prodotto non presente nell'ordine");
+                        if(obj.is_ean) {
+                            $("#result_strip ul.texts").html("Prodotto presente nell'ordine");
+                            Quagga.stop();
+                        } else {
+                            $("#result_strip ul.texts").html("Prodotto non presente nell'ordine");
+                        }
+                        
                     }
                     
                     $("#result_strip ul.thumbnails").prepend($node);
