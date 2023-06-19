@@ -26,7 +26,7 @@ if($task) {
                 } else {
                     $title = "Nessuno";
                 }
-                echo $title;
+                echo json_encode(["title" => $title]);
             } elseif($type == "order") {
                 $result = $db->Query("SELECT id, string FROM jos_rkcommerce_gross_orders WHERE id = " . substr(substr($ean, -7), 0, -1));
                 $item = $db->Result($result);    
@@ -36,7 +36,7 @@ if($task) {
                     $item = $db->Result($result);    
                     $eans[] = $item["ean"] ?? "N/A";
                 }
-                echo implode(", ", $eans);
+                echo json_encode($eans);
             }
         break;
         default:
