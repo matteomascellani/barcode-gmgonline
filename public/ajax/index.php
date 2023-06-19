@@ -19,25 +19,44 @@ if($task) {
         case "check_code":
             $db = new Database;
             if($type == "product") {
+
+                if(!isset($_SESSION['eans'])) {
+                    echo json_encode(["error"=>"Devi prima scansionare un ordine!"]);
+                    die();
+                }
                 $result = $db->Query("SELECT id, title, ean FROM jos_rkcommerce_products WHERE ean = " . $ean);
                 $item = $db->Result($result);
-                if($item) {
-                    $title = $item["title"] . " " . $item["ean"];
-                } else {
-                    $title = "Nessuno";
+                if(!$item) {
+                    echo json_encode(["error"=>"Nessun prodotto con questo EAN!"]);
+                    die();
                 }
                 $_SESSION['ean'] = $item["ean"];
                 echo json_encode($_SESSION);
             } elseif($type == "order") {
-                $result = $db->Query("SELECT id, string FROM jos_rkcommerce_gross_orders WHERE id = " . substr(substr($ean, -7), 0, -1));
-                $item = $db->Result($result);    
+                session_destroy();
+                session_start();
+                $eans = [];
+                $id = substr(substr($ean, -7), 0, -1);
+                $result = $db->Query("SELECT id, string FROM jos_rkcommerce_gross_orders WHERE id = " . $id);
+                $item = $db->Result($result);
+                if(!$item) {
+                    echo json_encode(["error"=>"Nessun ordine con codice " . $id]);
+                    die();
+                }
                 $products = json_decode($item["string"],1);
                 foreach($products as $product) {
                     $result = $db->Query("SELECT id, ean FROM jos_rkcommerce_products WHERE id = " . $product["itemid"]);
                     $item = $db->Result($result);    
-                    $eans[] = $item["ean"] ?? "N/A";
+                    if($item && $item["ean"] != "") {
+                        $eans[] = $item["ean"];
+                    }
+                }
+                if(!count($eans)) {
+                    echo json_encode(["error"=>"Nessun EAN trovato nell'ordine!"]);
+                    die();
                 }
                 $_SESSION['eans'] = $eans;
+                $_SESSION["is_ean"] = in_array($_SESSION["ean"],$_SESSION["eans"]) ? true : false;
                 echo json_encode($_SESSION);
             }
         break;
