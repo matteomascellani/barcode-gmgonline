@@ -1,4 +1,7 @@
 <?php
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(-1);
 define("DB_HOST","46.4.41.134");
 define("DB_USER","brandazza_gmg");
 define("DB_PASSWORD","5*Dejh43");
