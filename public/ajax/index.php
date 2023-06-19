@@ -26,7 +26,6 @@ if($task) {
                 } else {
                     $title = "Nessuno";
                 }
-                echo json_encode(["title" => $title]);
                 $_SESSION['ean'] = $item["ean"];
                 echo json_encode($_SESSION);
             } elseif($type == "order") {
