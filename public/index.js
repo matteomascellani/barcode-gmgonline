@@ -111,6 +111,22 @@ $(function() {
                 e.preventDefault();
                 Quagga.stop();
                 self._printCollectedResults();
+                $.ajax({
+                    type : 'POST',
+                    url : "../ajax/index.php",
+                    data : {
+                        task : "reset"
+                    },
+                    success : function(data) {
+                        var obj = jQuery.parseJSON(data);
+                        $("#result_strip ul.texts").html(obj.error);                   
+                        $("#result_strip ul.thumbnails").empty();
+                    },
+                    error : function() {
+        
+                    }
+                });
+
             });
 
             $(".controls .reader-config-group").on("click", "button", function(e) {

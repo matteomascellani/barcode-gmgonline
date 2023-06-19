@@ -16,6 +16,13 @@ if($task) {
 
     switch($task) {
 
+        case "reset":
+            unset($_SESSION["ean"]);    
+            unset($_SESSION["eans"]);
+            unset($_SESSION);
+            session_destroy();
+            echo json_encode(["error"=>"Strumento resettato!"]);
+        break;
         case "check_code":
             $db = new Database;
             if($type == "product") {
