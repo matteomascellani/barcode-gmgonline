@@ -113,7 +113,7 @@ $(function() {
                 self._printCollectedResults();
             });
 
-            $(".controls .reader-config-group").on("click", "input", function(e) {
+            $(".controls .reader-config-group").on("click", "button", function(e) {
                 e.preventDefault();
                 var $target = $(e.target),
                     value = $target.val(),
