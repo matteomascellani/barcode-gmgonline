@@ -284,7 +284,7 @@ $(function() {
         var code = result.codeResult.code;
 
         console.log(result);
-        console.log(App);
+        console.log(App.state.decoder.readers);
 
         if (App.lastResult !== code) {
             App.lastResult = code;
