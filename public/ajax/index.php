@@ -10,6 +10,7 @@ define("AUTH","Ls8asL:as");
 require_once("../classes/database.php");
 
 extract($_REQUEST);
+session_start();
 
 if($task) {
 
@@ -19,12 +20,24 @@ if($task) {
             $db = new Database;
             if($type == "product") {
                 $result = $db->Query("SELECT id, title, ean FROM jos_rkcommerce_products WHERE ean = " . $ean);
+                $item = $db->Result($result);
+                if($item) {
+                    $title = $item["title"] . " " . $item["ean"];
+                } else {
+                    $title = "Nessuno";
+                }
+                echo $title;
             } elseif($type == "order") {
                 $result = $db->Query("SELECT id, string FROM jos_rkcommerce_gross_orders WHERE id = " . substr(substr($ean, -7), 0, -1));
-                echo "SELECT id, string FROM jos_rkcommerce_gross_orders WHERE id = " . substr($ean, -7);
+                $item = $db->Result($result);    
+                $products = json_decode($item["string"],1);
+                foreach($products as $product) {
+                    $result = $db->Query("SELECT id, ean FROM jos_rkcommerce_products WHERE id = " . $product["itemid"]);
+                    $item = $db->Result($result);    
+                    $eans[] = $item["ean"] ?? "N/A";
+                }
+                echo implode(", ", $eans);
             }
-            $item = $db->Result($result);
-            print_r($item);
         break;
         default:
         break;
