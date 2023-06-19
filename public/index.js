@@ -283,6 +283,7 @@ $(function() {
     Quagga.onDetected(function(result) {
         var code = result.codeResult.code;
 
+        console.log(result);
         console.log(App);
 
         if (App.lastResult !== code) {
