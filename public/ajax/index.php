@@ -31,6 +31,9 @@ if($task) {
                     die();
                 }
                 $_SESSION['ean'] = $item["ean"];
+                if(isset($_SESSION["eans"])) {
+                    $_SESSION["is_ean"] = in_array($_SESSION["ean"],$_SESSION["eans"]) ? true : false;
+                } 
                 echo json_encode($_SESSION);
             } elseif($type == "order") {
                 session_start();
@@ -55,13 +58,14 @@ if($task) {
                     die();
                 }
                 $_SESSION['eans'] = $eans;
-                $_SESSION["is_ean"] = in_array($_SESSION["ean"],$_SESSION["eans"]) ? true : false;
+                if(isset($_SESSION["ean"])) {
+                    $_SESSION["is_ean"] = in_array($_SESSION["ean"],$_SESSION["eans"]) ? true : false;
+                }                
                 echo json_encode($_SESSION);
             }
         break;
         default:
         break;
-
     }
 
 
