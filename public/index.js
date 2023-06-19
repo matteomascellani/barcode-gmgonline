@@ -246,7 +246,7 @@ $(function() {
             frequency: 10,
             decoder: {
                 readers : [{
-                    format: "ean_reader",
+                    format: "code_128_reader",
                     config: {}
                 }]
             },
