@@ -309,7 +309,8 @@ $(function() {
                 },
                 success : function(data) {
                     var obj = jQuery.parseJSON(data);
-                    console.log(obj);
+                    console.log(obj.);
+                    $("#result_strip ul.thumbnails").prepend($node);
                 },
                 error : function() {
     
