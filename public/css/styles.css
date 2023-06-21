@@ -182,20 +182,20 @@ i.icon-24-scan {
   }
 
   #interactive.viewport {
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    height: 400px;
     overflow: hidden;
   }
 
 
   #interactive.viewport canvas, video {
     margin-top: -50px;
-    width: 300px;
+    width: 400px;
     height: 400px;
   }
 
   #interactive.viewport canvas.drawingBuffer, video.drawingBuffer {
-    margin-left: -300px;
+    margin-left: -400px;
   }
 
 
