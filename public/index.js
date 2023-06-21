@@ -121,6 +121,7 @@ $(function() {
                         var obj = jQuery.parseJSON(data);
                         $("#result_strip ul.texts").html(obj.error);                   
                         $("#result_strip ul.thumbnails").empty();
+                        $("#result_strip div.order").html("Nessun ordine");
                     },
                     error : function() {
         
@@ -337,16 +338,17 @@ $(function() {
                 success : function(data) {
                     var obj = jQuery.parseJSON(data);
                     console.log(obj.is_ean);
-                    if(obj.error) {
-                        $("#result_strip ul.texts").html(obj.error);    
-                    } else {
-                        if(obj.is_ean) {
-                            $("#result_strip ul.texts").html("Prodotto presente nell'ordine");
-                            Quagga.stop();
-                        } else {
-                            $("#result_strip ul.texts").html("Prodotto non presente nell'ordine");
-                        }
-                        
+                    if(obj.response == 'error') {
+                        $("#result_strip div.texts").html("Report: " + obj.message);    
+                    } else if(obj.response == 'order') {
+                        $("#result_strip div.order").html(obj.message);    
+                    }
+
+                    if(obj.is_ean == 1) {
+                        $("#result_strip div.texts").html("Report: Prodotto presente nell'ordine");
+                        Quagga.stop();
+                    } else if(obj.is_ean == 2) {
+                        $("#result_strip div.texts").html("Report: Prodotto non presente nell'ordine");
                     }
                     
                     $("#result_strip ul.thumbnails").prepend($node);

@@ -10,40 +10,8 @@ body {
   padding-top: 0;
 }
 
-h1, h2, h3, h4 {
-  font-family: "Cabin Condensed", sans-serif;
-}
-
-header {
-  background: #FFC600;
-  padding: 1em;
-}
-
-header .headline {
-  max-width: 640px;
-  margin: 0 auto;
-}
-
-header .headline h1 {
-  color: #FFDD69;
-  font-size: 3em;
-  margin-bottom: 0;
-}
-
-header .headline h2 {
-  margin-top: 0.2em;
-}
-
-footer {
-  background: #0A4DB7;
-  color: #6C9CE8;
-  padding: 1em 2em 2em;
-}
-
 #container {
-  width: 640px;
-  margin: 20px auto;
-  padding: 10px;
+  width: 100%;
 }
 
 #interactive.viewport {
@@ -61,41 +29,6 @@ footer {
 #interactive.viewport canvas.drawingBuffer, video.drawingBuffer {
   margin-left: -640px;
 }
-
-.controls fieldset {
-  border: none;
-  margin: 0;
-  padding: 0;
-}
-
-.controls .input-group {
-  float: left;
-}
-
-.controls .input-group input, .controls .input-group button {
-  display: block;
-}
-
-.controls .reader-config-group {
-  float: right;
-}
-
-.controls .reader-config-group label {
-  display: block;
-}
-
-.controls .reader-config-group label span {
-  width: 9rem;
-  display: inline-block;
-  text-align: right;
-}
-
-.controls:after {
-  content: '';
-  display: block;
-  clear: both;
-}
-
 
 #result_strip {
   margin: 10px 0;
@@ -147,7 +80,6 @@ footer {
   clear: both;
 }
 
-
 .scanner-overlay {
   display: none;
   width: 640px;
@@ -190,7 +122,6 @@ footer {
   cursor: pointer;
 }
 
-
 i.icon-24-scan {
   width: 24px;
   height: 24px;
@@ -202,21 +133,41 @@ i.icon-24-scan {
   vertical-align: text-top;
 }
 
+.btn {
+  border:none;
+  background:#cdcdcd;
+  color: #000;
+  width:30%;
+  height:200px;
+  cursor:pointer;
+  font-size:30px;
+}
+
+.texts_order {
+  margin:10px;
+  display:flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.texts_order > div {
+  flex-basis: 0;
+  flex-grow: 1;
+}
+
+.order {
+  text-align: right;
+}
+
 @media (max-width: 603px) {
 
   #container {
-    width: 300px;
-    margin: 10px auto;
-    -moz-box-shadow: none;
-    -webkit-box-shadow: none;
-    box-shadow: none;
+    width: 100%;
   }
 
   #container form.voucher-form input.voucher-code {
     width: 180px;
   }
-}
-@media (max-width: 603px) {
 
   .reader-config-group {
     width: 100%;
