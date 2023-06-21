@@ -341,7 +341,8 @@ $(function() {
                     if(obj.response == 'error') {
                         $("div.texts").html("Report: " + obj.message);    
                     } else if(obj.response == 'order') {
-                        $("div.order").html(obj.message);    
+                        $("div.order").html(obj.message);  
+                        Quagga.stop();  
                     }
 
                     if(obj.is_ean == 1) {
