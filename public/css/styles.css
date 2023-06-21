@@ -159,6 +159,10 @@ i.icon-24-scan {
   text-align: right;
 }
 
+.details {
+  margin:10px
+}
+
 @media (max-width: 603px) {
 
   #container {

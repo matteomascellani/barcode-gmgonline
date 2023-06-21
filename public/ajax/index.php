@@ -41,7 +41,7 @@ if($task) {
                 if(isset($_SESSION["eans"])) {
                     $_SESSION["is_ean"] = in_array($_SESSION["ean"],$_SESSION["eans"]) ? 1 : 2;
                 } 
-                echo json_encode(["response"=>"product", "is_ean" => $_SESSION["is_ean"] ?? null]);
+                echo json_encode(["response"=>"product", "title" => $item["title"], "is_ean" => $_SESSION["is_ean"] ?? null]);
 
             } elseif($type == "order") {
                 $eans = [];

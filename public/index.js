@@ -340,6 +340,7 @@ $(function() {
                     console.log(obj.is_ean);
                     if(obj.response == 'error') {
                         $("div.texts").html("Report: " + obj.message);    
+                        //App.init();
                     } else if(obj.response == 'order') {
                         $("div.order").html(obj.message);  
                         Quagga.stop();  
@@ -347,6 +348,7 @@ $(function() {
 
                     if(obj.is_ean == 1) {
                         $("div.texts").html("Report: Prodotto presente nell'ordine");
+                        $("div.details").html(obj.title);
                         Quagga.stop();
                     } else if(obj.is_ean == 2) {
                         $("div.texts").html("Report: Prodotto non presente nell'ordine");
