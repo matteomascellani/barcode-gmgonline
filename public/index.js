@@ -129,7 +129,7 @@ $(function() {
 
             });
 
-            $(".controls .reader-config-group").on("click", "button", function(e) {
+            $(".controls").on("click", "button.type", function(e) {
                 e.preventDefault();
                 var $target = $(e.target),
                     value = $target.val(),
@@ -140,7 +140,7 @@ $(function() {
                 self.setState(state, value);
             });
 
-            $(".controls .reader-config-group").on("change", "input, select", function(e) {
+            /* $(".controls .reader-config-group").on("change", "input, select", function(e) {
                 e.preventDefault();
                 var $target = $(e.target),
                     value = $target.attr("type") === "checkbox" ? $target.prop("checked") : $target.val(),
@@ -149,7 +149,7 @@ $(function() {
 
                 console.log("Value of "+ state + " changed to " + value);
                 self.setState(state, value);
-            });
+            }); */
         },
         _printCollectedResults: function() {
             var results = resultCollector.getResults(),
