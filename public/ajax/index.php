@@ -61,7 +61,7 @@ if($task) {
                     }
                 }
                 if(!count($eans)) {
-                    echo json_encode(["response"=>"error", "message"=>"Nessun EAN trovato nell'ordine!"]);
+                    echo json_encode(["response"=>"error", "message"=>"Nessun EAN trovato nell'ordine " . $id . "! Controlla il codice!"]);
                     die();
                 }
                 $_SESSION['eans'] = $eans;
