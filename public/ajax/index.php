@@ -68,7 +68,7 @@ if($task) {
                 if(isset($_SESSION["ean"])) {
                     $_SESSION["is_ean"] = in_array($_SESSION["ean"],$_SESSION["eans"]) ? 1 : 2;
                 }                
-                echo json_encode(["response"=>"order", "message"=>"ID Ordine: " + $item["id"], "is_ean" => $_SESSION["is_ean"]]);
+                echo json_encode(["response"=>"order", "message"=>"ID Ordine: " . $item["id"], "is_ean" => $_SESSION["is_ean"]]);
             }
         break;
         default:
