@@ -119,6 +119,7 @@ $(function() {
                     },
                     success : function(data) {
                         var obj = jQuery.parseJSON(data);
+                        $("div.details").empty();
                         $("div.texts").html("Report: ");                   
                         $("div.order").html("Nessun ordine");
                         $("#result_strip ul.thumbnails").empty();
@@ -337,6 +338,7 @@ $(function() {
                 },
                 success : function(data) {
                     var obj = jQuery.parseJSON(data);
+                    $("div.details").empty();
                     console.log(obj.is_ean);
                     if(obj.response == 'error') {
                         $("div.texts").html("Report: " + obj.message);    
