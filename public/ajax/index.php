@@ -21,7 +21,7 @@ if($task) {
             unset($_SESSION["eans"]);
             unset($_SESSION);
             session_destroy();
-            echo json_encode(["error"=>"Strumento resettato!"]);
+            echo json_encode(["response"=>"stop", "message"=>"Nessun ordine"]);
         break;
         case "check_code":
             $db = new Database;

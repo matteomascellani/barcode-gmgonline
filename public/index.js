@@ -119,9 +119,9 @@ $(function() {
                     },
                     success : function(data) {
                         var obj = jQuery.parseJSON(data);
-                        $("#result_strip ul.texts").html(obj.error);                   
+                        $("div.texts").html("Report: ");                   
+                        $("div.order").html("Nessun ordine");
                         $("#result_strip ul.thumbnails").empty();
-                        $("#result_strip div.order").html("Nessun ordine");
                     },
                     error : function() {
         
