@@ -339,16 +339,16 @@ $(function() {
                     var obj = jQuery.parseJSON(data);
                     console.log(obj.is_ean);
                     if(obj.response == 'error') {
-                        $("#result_strip div.texts").html("Report: " + obj.message);    
+                        $("div.texts").html("Report: " + obj.message);    
                     } else if(obj.response == 'order') {
-                        $("#result_strip div.order").html(obj.message);    
+                        $("div.order").html(obj.message);    
                     }
 
                     if(obj.is_ean == 1) {
-                        $("#result_strip div.texts").html("Report: Prodotto presente nell'ordine");
+                        $("div.texts").html("Report: Prodotto presente nell'ordine");
                         Quagga.stop();
                     } else if(obj.is_ean == 2) {
-                        $("#result_strip div.texts").html("Report: Prodotto non presente nell'ordine");
+                        $("div.texts").html("Report: Prodotto non presente nell'ordine");
                     }
                     
                     $("#result_strip ul.thumbnails").prepend($node);
