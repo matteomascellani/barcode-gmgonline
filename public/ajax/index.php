@@ -34,7 +34,7 @@ if($task) {
                 $result = $db->Query("SELECT id, title, ean FROM jos_rkcommerce_products WHERE ean = " . $ean);
                 $item = $db->Result($result);
                 if(!$item) {
-                    echo json_encode(["response"=>"error", "message"=>"Nessun prodotto con questo EAN!"]);
+                    echo json_encode(["response"=>"error", "message"=>"Nessun prodotto con questo EAN: " . $ean]);
                     die();
                 }
                 $_SESSION['ean'] = $item["ean"];
