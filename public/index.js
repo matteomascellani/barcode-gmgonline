@@ -348,9 +348,11 @@ $(function() {
                         Quagga.stop();  
                     }
 
+                    $("div.details").html(obj.title);
+
                     if(obj.is_ean == 1) {
                         $("div.texts").html("Report: Prodotto presente nell'ordine");
-                        $("div.details").html(obj.title);
+                        
                         Quagga.stop();
                     } else if(obj.is_ean == 2) {
                         $("div.texts").html("Report: Prodotto non presente nell'ordine");
