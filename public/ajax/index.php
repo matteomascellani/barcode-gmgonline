@@ -27,10 +27,10 @@ if($task) {
             $db = new Database;
             if($type == "product") {
 
-                if(!isset($_SESSION['eans'])) {
+                /* if(!isset($_SESSION['eans'])) {
                     echo json_encode(["response"=>"error", "message"=>"Devi prima scansionare un ordine!"]);
                     die();
-                }
+                } */
                 $result = $db->Query("SELECT id, title, ean FROM jos_rkcommerce_products WHERE ean = " . $ean);
                 $item = $db->Result($result);
                 if(!$item) {
