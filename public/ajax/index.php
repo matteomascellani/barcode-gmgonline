@@ -55,7 +55,7 @@ if($task) {
                     $id = substr(substr($ean, -12), 0, -1);
                     $result = $db->Query("SELECT id, orders FROM jos_rkcommerce_gross_borderos WHERE id = " . (int)$id);
                     $item = $db->Result($result);
-                    $ids = json_decode($item->orders,1);
+                    $ids = json_decode($item["orders"],1);
                 }             
                 
                 $result = $db->Query("SELECT id, string FROM jos_rkcommerce_gross_orders WHERE id IN (" . implode(",",$ids). ")");
