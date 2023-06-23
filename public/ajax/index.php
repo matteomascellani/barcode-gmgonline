@@ -44,22 +44,38 @@ if($task) {
                 echo json_encode(["response"=>"product", "title" => $item["title"], "is_ean" => $_SESSION["is_ean"] ?? null]);
 
             } elseif($type == "order") {
+
+
+                $type = substr($ean, 0, 1);
                 $eans = [];
-                $id = substr(substr($ean, -7), 0, -1);
-                $result = $db->Query("SELECT id, string FROM jos_rkcommerce_gross_orders WHERE id = " . $id);
-                $item = $db->Result($result);
-                if(!$item) {
+
+                if($type == 2) {
+                    $ids = substr(substr($ean, -7), 0, -1);
+                } elseif($type == 5) {
+                    $id = substr(substr($ean, -12), 0, -1);
+                    $result = $db->Query("SELECT id, orders FROM jos_rkcommerce_gross_borderos WHERE id = " . (int)$id);
+                    $item = $db->Result($result);
+                    $ids = json_decode($item->orders,1);
+                }             
+                
+                $result = $db->Query("SELECT id, string FROM jos_rkcommerce_gross_orders WHERE id IN (" . implode(",",$ids). ")");
+                $items = $db->Results($result);
+                if(!$items) {
                     echo json_encode(["response"=>"error", "message"=>"Nessun ordine con codice " . $id]);
                     die();
                 }
-                $products = json_decode($item["string"],1);
-                foreach($products as $product) {
-                    $result = $db->Query("SELECT id, ean FROM jos_rkcommerce_products WHERE id = " . $product["itemid"]);
-                    $item = $db->Result($result);    
-                    if($item && $item["ean"] != "") {
-                        $eans[] = $item["ean"];
+
+                foreach($items as $item) {
+                    $products = json_decode($item["string"],1);
+                    foreach($products as $product) {
+                        $result = $db->Query("SELECT id, ean FROM jos_rkcommerce_products WHERE id = " . $product["itemid"]);
+                        $item = $db->Result($result);    
+                        if($item && $item["ean"] != "") {
+                            $eans[] = $item["ean"];
+                        }
                     }
                 }
+
                 if(!count($eans)) {
                     echo json_encode(["response"=>"error", "message"=>"Nessun EAN trovato nell'ordine " . $id . "! Controlla il codice!"]);
                     die();
