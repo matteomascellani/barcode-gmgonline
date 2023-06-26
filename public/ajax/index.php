@@ -46,12 +46,12 @@ if($task) {
             } elseif($type == "order") {
 
 
-                $type = substr($ean, 0, 1);
+                $coding = substr($ean, 0, 1);
                 $eans = [];
 
-                if($type == 2) {
+                if($coding == 2) {
                     $ids = substr(substr($ean, -7), 0, -1);
-                } elseif($type == 5) {
+                } elseif($coding == 5) {
                     $id = substr(substr($ean, -12), 0, -1);
                     $result = $db->Query("SELECT id, orders FROM jos_rkcommerce_gross_borderos WHERE id = " . (int)$id);
                     $item = $db->Result($result);
