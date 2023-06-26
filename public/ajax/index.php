@@ -50,7 +50,7 @@ if($task) {
                 $eans = [];
 
                 if($coding == 2) {
-                    $ids = substr(substr($ean, -7), 0, -1);
+                    $ids = [substr(substr($ean, -7), 0, -1)];
                 } elseif($coding == 5) {
                     $id = substr(substr($ean, -12), 0, -1);
                     $result = $db->Query("SELECT id, orders FROM jos_rkcommerce_gross_borderos WHERE id = " . (int)$id);
