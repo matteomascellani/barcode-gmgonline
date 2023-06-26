@@ -68,7 +68,7 @@ if($task) {
                 foreach($items as $item) {
                     $products = json_decode($item["string"],1);
                     foreach($products as $product) {
-                        $result = $db->Query("SELECT id, ean FROM jos_rkcommerce_products WHERE id = " . $product["itemid"]);
+                        $result = $db->Query("SELECT id, ean, combinato, id_combinati FROM jos_rkcommerce_products WHERE id = " . $product["itemid"]);
                         $item = $db->Result($result);    
                         if($item && $item['combinato'] == 1) {
                             $multiples = explode(",",$item["id_combinati"]);
