@@ -37,9 +37,21 @@ if($task) {
                     echo json_encode(["response"=>"error", "message"=>"Nessun prodotto con questo EAN: " . $ean]);
                     die();
                 }
-                $_SESSION['ean'] = $item["ean"];
+
+                if($item['combinato'] == 1) {
+                    $multiples = explode(",",$item["id_combinati"]);
+                    foreach($multiples as $multiple) {
+                        $result = $db->Query("SELECT id, title, ean FROM jos_rkcommerce_products WHERE id = " . $multiple);
+                        $single = $db->Result($result);
+                        $_SESSION['ean'][] = $single["ean"];
+                    }
+                } else {
+                    $_SESSION['ean'][] = $item["ean"];
+                }
+
+                
                 if(isset($_SESSION["eans"])) {
-                    $_SESSION["is_ean"] = in_array($_SESSION["ean"],$_SESSION["eans"]) ? 1 : 2;
+                    $_SESSION["is_ean"] = count(array_intersect($_SESSION["ean"],$_SESSION["eans"])) ? 1 : 2;
                 } 
                 echo json_encode(["response"=>"product", "title" => $item["title"], "is_ean" => $_SESSION["is_ean"] ?? null]);
 
@@ -82,7 +94,7 @@ if($task) {
                 }
                 $_SESSION['eans'] = $eans;
                 if(isset($_SESSION["ean"])) {
-                    $_SESSION["is_ean"] = in_array($_SESSION["ean"],$_SESSION["eans"]) ? 1 : 2;
+                    $_SESSION["is_ean"] = count(array_intersect($_SESSION["ean"],$_SESSION["eans"])) ? 1 : 2;
                 }                
                 echo json_encode(["response"=>"order", "message"=>"ID Ordine: " . implode(",",$ids), "is_ean" => $_SESSION["is_ean"] ?? null]);
             }
